@@ -1,0 +1,23 @@
+Italic
+Arial
+Times New Roman
+Calibri
+Tohama
+Abomsaab
+Adobe Gothic Std
+AR DESTINE
+AR HERMANN
+Blackadder ITC
+Blackoak Std
+Bodoni MT Poster
+Britannic
+Brush Script MT
+Engravers MT
+Funstuff
+Gallaudet
+Gill Sans
+Goudy Stout
+Harlow Solid
+Latin
+Lucida Handwriting
+Trajan Pro
