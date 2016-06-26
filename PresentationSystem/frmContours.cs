@@ -351,6 +351,14 @@ namespace FindContours
             Color newColor = Color.FromArgb(100, painter.color.Color);
             painter.pen = new Pen(newColor, 20);
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            this.Hide();
+            PPT slideShow = new PPT(hMin.Value, sMin.Value, vMin.Value, hMax.Value, sMax.Value, vMax.Value);
+            slideShow.ShowDialog();
+        }
          
     }
 }

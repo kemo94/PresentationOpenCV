@@ -63,3 +63,5 @@ C:\Users\kemos\Desktop\New folder\FindContours\FindContours\bin\Debug\Emgu.CV.UI
 C:\Users\kemos\Desktop\New folder\FindContours\FindContours\bin\Debug\Emgu.Util.xml
 C:\Users\kemos\Desktop\New folder\FindContours\FindContours\obj\Debug\FindContours.startPresentation.resources
 C:\Users\kemos\Desktop\New folder\FindContours\FindContours\obj\Debug\FindContours.SlideShow.resources
+C:\Users\kemos\Desktop\New folder\FindContours\FindContours\obj\Debug\FindContours.csproj.ResolveComReference.cache
+C:\Users\kemos\Desktop\New folder\FindContours\FindContours\obj\Debug\FindContours.PPT.resources
