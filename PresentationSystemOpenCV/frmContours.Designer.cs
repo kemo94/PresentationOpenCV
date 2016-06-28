@@ -65,7 +65,6 @@
             this.pictBoxColor = new System.Windows.Forms.PictureBox();
             this.camerStream = new System.Windows.Forms.Timer(this.components);
             this.marker = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.hMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sMax)).BeginInit();
@@ -400,13 +399,6 @@
             this.marker.UseVisualStyleBackColor = true;
             this.marker.Click += new System.EventHandler(this.marker_Click);
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(687, 528);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 37;
-            // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(701, 575);
@@ -423,7 +415,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1201, 681);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.marker);
             this.Controls.Add(this.stopBtn);
             this.Controls.Add(this.playBtn);
@@ -514,7 +505,6 @@
         private System.Windows.Forms.Button stopBtn;
         private System.Windows.Forms.Timer camerStream;
         private System.Windows.Forms.Button marker;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button2;
     }
 }

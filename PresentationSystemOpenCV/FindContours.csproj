@@ -58,6 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DetectHand.cs" />
     <Compile Include="Files.cs" />
     <Compile Include="frmContours.cs">
       <SubType>Form</SubType>
