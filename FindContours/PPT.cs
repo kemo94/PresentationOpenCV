@@ -66,50 +66,45 @@ namespace FindContours
         {
 
 
-            //Create an instance of PowerPoint.
-            pptApplication = new Microsoft.Office.Interop.PowerPoint.Application();
-
-            // Show PowerPoint to the user.
-            pptApplication.Visible = Microsoft.Office.Core.MsoTriState.msoTrue;
-
-            objPresSet = pptApplication.Presentations;
-
-            //open the presentation
-            presentation = objPresSet.Open(strPres, MsoTriState.msoFalse,
-            MsoTriState.msoTrue, MsoTriState.msoTrue);
-
-            presentation.SlideShowSettings.Run();
-
             if (c == null)
             {
                 c = new Emgu.CV.Capture();
             }
-            /*
+            
             try
             {
-                pptApplication = Marshal.GetActiveObject("PowerPoint.Application") as PPt.Application;
+            
+                pptApplication = new Microsoft.Office.Interop.PowerPoint.Application();
+
+                pptApplication.Visible = Microsoft.Office.Core.MsoTriState.msoTrue;
+
+                objPresSet = pptApplication.Presentations;
+                presentation = objPresSet.Open(strPres, MsoTriState.msoFalse,
+                MsoTriState.msoTrue, MsoTriState.msoTrue);
+
+                presentation.SlideShowSettings.Run();
+                if (pptApplication != null)
+                {
+                    presentation = pptApplication.ActivePresentation;
+                    slides = presentation.Slides;
+                    slidescount = slides.Count;
+                    /*  try
+                      {
+                          slide = slides[pptApplication.ActiveWindow.Selection.SlideRange.SlideNumber];
+                      }
+                      catch
+                      {
+                          slide = pptApplication.SlideShowWindows[1].View.Slide;
+                      }
+                  */
+                    presentationTimer.Enabled = true;
+                }
             }
             catch
             {
-                MessageBox.Show("Please Run PowerPoint Firstly", "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+                MessageBox.Show("Please Choose PowerPoint File", "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
             }
-             * */
-            if (pptApplication != null)
-            {
-                presentation = pptApplication.ActivePresentation;
-                slides = presentation.Slides;
-                slidescount = slides.Count;
-              /*  try
-                {
-                    slide = slides[pptApplication.ActiveWindow.Selection.SlideRange.SlideNumber];
-                }
-                catch
-                {
-                    slide = pptApplication.SlideShowWindows[1].View.Slide;
-                }
-            */
-                presentationTimer.Enabled = true;
-            }
+       
             
         }
 
@@ -142,6 +137,7 @@ namespace FindContours
 
                     if (first || defectArray.Length <= indxMn)
                     {
+                        if ( defectArray != null )
                         indxMn = hand.getMinIndx();
                         first = false;
                     }
@@ -179,6 +175,7 @@ namespace FindContours
                       //  slide = slides[slideIndex];
                       //  slides[slideIndex].Select();
                     }
+                    first = false ;
                 }
                 else if (fingerNum == 4 )
                 {
@@ -196,6 +193,7 @@ namespace FindContours
 
                     }
                     
+                    first = false ;
                 }
 
                 textBox1.Text = fingerNum + "";
