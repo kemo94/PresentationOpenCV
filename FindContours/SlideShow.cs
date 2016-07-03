@@ -13,6 +13,7 @@ using Emgu.CV.CvEnum;
 using Emgu.CV.UI;
 using System.Media;
 using System.Runtime.InteropServices;
+using System.IO;
 namespace FindContours
 {
     public partial class SlideShow : Form
@@ -54,9 +55,7 @@ namespace FindContours
             presentationTimer.Enabled = true;
             painter.graph = slides.CreateGraphics();
             painter.color = new ColorDialog();
-            painter.color.Color = Color.Black;
-            painter.initX = -1;
-            painter.initY = -1;
+            painter.color.Color = Color.Black; 
         }
 
         private void SlideShow_Load(object sender, EventArgs e)
@@ -130,7 +129,7 @@ namespace FindContours
         }
 
         private void pen_Click(object sender, EventArgs e)
-        {
+        { 
             painter.pen = new Pen(painter.color.Color, 3);
         }
 
@@ -234,26 +233,29 @@ namespace FindContours
                     if (fingerNum == 1)
                     {
                         presentationTimer.Interval = 10;
+
+                        if (first || defectArray.Length <= indxMn)
+                        {
+                            indxMn = hand.getMinIndx();
+                            first = false;
+                        }
                         if (painter.initX < 0 && painter.initY < 0)
                         {
                             painter.initX = (int)defectArray[indxMn].EndPoint.X;
                             painter.initY = (int)defectArray[indxMn].EndPoint.Y;
                         }
-                        if (painter.pen != null && painter.initX > 0 && painter.initY > 0)
+                        else if (painter.pen != null && painter.initX > 0 && painter.initY > 0)
                         {
                             int c_x = (int)defectArray[indxMn].EndPoint.X;
                             int c_y = (int)defectArray[indxMn].EndPoint.Y;
-
-                            painter.graph.DrawLine(painter.pen, new Point(painter.initX, painter.initY), new Point(c_x, c_y));
+                            try{
+                                painter.graph.DrawLine(painter.pen, new Point(painter.initX, painter.initY), new Point(c_x, c_y));
+                              }
+                            catch(Exception){}
                             Cursor.Position = new Point((int)defectArray[indxMn].EndPoint.X, (int)defectArray[indxMn].EndPoint.Y);
 
                             painter.initX = c_x;
                             painter.initY = c_y;
-                        }
-                        if (first || defectArray.Length <= indxMn)
-                        {
-                            indxMn = hand.getMinIndx();
-                            first = false;
                         }
                     }
                     else if (fingerNum == 2)

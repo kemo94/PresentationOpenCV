@@ -75,6 +75,7 @@
             // 
             // slides
             // 
+            this.slides.Cursor = System.Windows.Forms.Cursors.Cross;
             this.slides.Location = new System.Drawing.Point(3, -3);
             this.slides.Name = "slides";
             this.slides.Size = new System.Drawing.Size(388, 327);

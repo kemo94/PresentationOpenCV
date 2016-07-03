@@ -26,8 +26,7 @@ namespace FindContours
         int fingerNum = 1;
         
         int hMin , sMin, vMin, hMax, sMax, vMax;
-        int min = 10000000, indxMn = 0;
-        bool first = true;
+        int min = 10000000, indxMn = 0; 
          
         public void setHSV(string[] HSV){
             hMin = Int32.Parse(HSV[0]);
@@ -66,12 +65,13 @@ namespace FindContours
         }
         public void convertToBinary(Image<Bgr, Byte> originColorImage)
         {
-                 colorImage = originColorImage;
+                colorImage = originColorImage;
                 Image<Hsv, byte> imgHsv = colorImage.Convert<Hsv, Byte>();
                 Hsv lowerLimit = new Hsv(hMin, sMin, vMin);
                 Hsv upperLimit = new Hsv(hMax, sMax, vMax);
 
                 Image<Gray, byte> imageHSVDest = imgHsv.InRange(lowerLimit, upperLimit);
+            // morphological operators
                 Image<Gray, byte> erroded = imageHSVDest.Erode(2);
                 Image<Gray, byte> dilated = erroded.Dilate(2);
                 Image<Gray, byte> binary = dilated.SmoothBlur(7, 7);
@@ -84,6 +84,7 @@ namespace FindContours
                 StructuringElementEx element = new StructuringElementEx(3, 3, 1, 1, Emgu.CV.CvEnum.CV_ELEMENT_SHAPE.CV_SHAPE_CROSS);
 
                 CvInvoke.cvMorphologyEx(binary, dst, IntPtr.Zero, element, CV_MORPH_OP.CV_MOP_CLOSE, 1);
+
                 colorImage = binary.Convert<Bgr, Byte>();
                 using (MemStorage storage = new MemStorage())
                 {

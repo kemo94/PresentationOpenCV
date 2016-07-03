@@ -161,6 +161,7 @@ namespace FindContours
         private void openCam_Click(object sender, EventArgs e)
         {
 
+             
             if (c == null)
             {
                 c = new Emgu.CV.Capture();
